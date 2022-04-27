@@ -8,6 +8,7 @@ import Favorite from '../screens/Favorite';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import {RootStackParamList} from '../screens/Types';
+
 interface AppBarProps {
   navigation: StackNavigationProp<RootStackParamList, 'Home'>;
 }
