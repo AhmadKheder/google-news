@@ -1,7 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {memo, useState} from 'react';
-import {Button, Dimensions, StyleSheet, Text, View} from 'react-native';
-import Modal from 'react-native-modal';
+import {Button, Dimensions, StyleSheet, View} from 'react-native';
 import {RootStackParamList} from './Types';
 
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -15,18 +14,18 @@ const Favorite: React.FC<FavoriteProps> = ({navigation}) => {
   };
   return (
     <View style={{flex: 1, width: '100%'}}>
-      <Button title="Show modal" onPress={toggleModal} />
+      {/* <Button title="Show modal" onPress={toggleModal} /> */}
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Home Screen</Text>
+        {/* <Text>Home Screen</Text> */}
         <Button
-          title="Favorit to Profile"
+          title="Go to Profile"
           onPress={() => {
             console.log('Favorit to Profile');
             navigation.navigate('Profile');
           }}
         />
       </View>
-      <Modal
+      {/*     <Modal
         isVisible={isModalVisible}
         onSwipeComplete={toggleModal}
         swipeDirection="down"
@@ -39,7 +38,7 @@ const Favorite: React.FC<FavoriteProps> = ({navigation}) => {
           <Text style={styles.bottomSheetTitle}>Filter</Text>
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 };

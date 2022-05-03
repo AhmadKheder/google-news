@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   screen: {
     borderWidth: 1,
-    borderColor: 'red',
+    // borderColor: 'red',
   },
   container: {
     flex: 1,

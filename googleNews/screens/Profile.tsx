@@ -10,7 +10,7 @@ const Profile: React.FC<ProfileProps> = ({navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Button
-        title="Profile to Home"
+        title="Go to Home"
         onPress={() => {
           console.log('Profile to Home');
           navigation.navigate('Home');

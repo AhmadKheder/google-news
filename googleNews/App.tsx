@@ -21,11 +21,16 @@ const App = () => {
   }, []);
   const newsAPI = () => {
     var url =
-      'https://newsapi.org/v2/everything?' +
+      'https://newsapi.org/v2/top-headlines?' +
+      'country=us&' +
+      'apiKey=279121591f3849f4add3292ae66ced49';
+    // 'https://newsapi.org/v2/top-headlines?country=us&apiKey=279121591f3849f4add3292ae66ced49';
+
+    /*  'https://newsapi.org/v2/everything?' +
       'q=Apple&' +
       'from=2022-04-27&' +
       'sortBy=popularity&' +
-      'apiKey=279121591f3849f4add3292ae66ced49';
+      'apiKey=279121591f3849f4add3292ae66ced49'; */
 
     axios
       .get(url)
