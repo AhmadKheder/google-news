@@ -779,6 +779,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fawazahmed/react-native-read-more@^2.3.6":
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/@fawazahmed/react-native-read-more/-/react-native-read-more-2.3.6.tgz#4678475477f6a31fa724f8af9c91c7ab5a27ade2"
+  integrity sha512-UXVvD2hRncegtAPdG67Fgj5x/NQv+sq9jPDr6jZLWCDch4qUj9DE4u+1xAUvzHXeHgWDE5+mk3vLePy2+xsSyA==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.1.tgz#9551142a1980503752536b5050fd99f4a7f13b17"
@@ -5908,6 +5915,11 @@ react-native-ionicons@^4.x:
   version "4.6.5"
   resolved "https://registry.yarnpkg.com/react-native-ionicons/-/react-native-ionicons-4.6.5.tgz#b792ec8896381e67ff237eba955e38afe7ceb7a4"
   integrity sha512-s2Ia7M5t609LE9LWygMj3ALVPUlKhK7R9XcMb67fP4EYJv0oLcwg5pc+8ftv9XXaUuTW/WgL3zJlBYxAvtvMJg==
+
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
 react-native-modal@^13.0.1:
   version "13.0.1"

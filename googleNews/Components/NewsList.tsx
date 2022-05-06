@@ -4,12 +4,12 @@ import {
   Dimensions,
   FlatList,
   ImageBackground,
-  Linking,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import BottomSheet from './BottomSheet';
 import Context from './Context';
 export type articleAttriputesType = {
   source: {
@@ -28,8 +28,16 @@ const {width: SCREEN_WIDTH} = Dimensions.get('window');
 const NewsList = () => {
   const {articles} = useContext(Context);
   const [openArticle, setOpenArticle] = useState<boolean>(false);
-  const toggleOpenArticle = () => {
-    setOpenArticle(!openArticle);
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  const [newsDetailes, setNewsDetailes] = useState({
+    title: '',
+    description: '',
+  });
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+  const toggleOpenArticle = (isModalVisible: boolean) => {
+    setModalVisible(!isModalVisible);
   };
   return (
     <View style={styles.newsList}>
@@ -38,7 +46,13 @@ const NewsList = () => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}: {item: articleAttriputesType}) => (
           <TouchableOpacity
-            onPress={() => toggleOpenArticle}
+            onPress={() => {
+              setModalVisible(!isModalVisible);
+              setNewsDetailes({
+                title: item.title as string,
+                description: item.description as string,
+              });
+            }}
             style={openArticle ? styles.headingNewsOpend : styles.headingNews}>
             <ImageBackground
               source={{uri: item.urlToImage}}
@@ -46,23 +60,27 @@ const NewsList = () => {
               imageStyle={{borderRadius: 25}}
             />
 
-            <Text style={styles.newsAuthor}>
-              {item!.author ? ` by: ${item!.author}` : 'Unknown author'}
-            </Text>
-            <Text style={styles.newsTitle}>{item!.title}</Text>
-            {/* <Text style={styles.newsDescription}>
-              {item!.description?.substring(0, 100)}...
-            </Text> */}
-            <TouchableOpacity
-              onPress={() => Linking.openURL(item!.url!.toString())}>
-              <Text style={{color: 'blue'}}>source_link</Text>
-            </TouchableOpacity>
+            <View style={styles.cardContainer}>
+              <Text style={styles.newsTitle}>{item!.title}</Text>
+              <View style={styles.newsAutherDatContainer}>
+                <Text style={styles.newsAuthor}>
+                  {item!.author ? `${item!.author}` : 'Unknown author'}
+                </Text>
+                <Text style={styles.newsAuthor}>
+                  {item.publishedAt?.slice(0, 10)}
+                </Text>
+              </View>
+            </View>
           </TouchableOpacity>
         )}
-        contentContainerStyle={{
-          flexGrow: 1,
-        }}
       />
+      {isModalVisible && (
+        <BottomSheet
+          isModalVisible={isModalVisible}
+          newsDetailes={newsDetailes}
+          ComponentName="NewsList"
+        />
+      )}
     </View>
   );
 };
@@ -76,21 +94,28 @@ const styles = StyleSheet.create({
   newsImgBckground: {
     width: SCREEN_WIDTH / 1.03,
     position: 'absolute',
-    opacity: 0.6,
+    opacity: 0.8,
     justifyContent: 'center',
     alignContent: 'center',
     borderRadius: 25,
     height: 160,
   },
+  cardContainer: {
+    // flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignSelf: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+  },
   newsAuthor: {
     fontSize: 12,
     fontWeight: '500',
-    color: 'black',
+    color: '#fff',
   },
   newsTitle: {
     fontSize: 18,
     fontWeight: '500',
-    color: 'black',
+    color: '#fff',
   },
   newsDescription: {
     fontSize: 10,
@@ -98,6 +123,7 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     color: '#000',
   },
+
   headingNews: {
     width: SCREEN_WIDTH / 1.03,
     borderRadius: 25,
@@ -115,6 +141,13 @@ const styles = StyleSheet.create({
     height: 500,
     // flex: 1,
   },
+  newsAutherDatContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginVertical: 80,
+  },
+
   rowcontainer: {
     flex: 1,
     flexDirection: 'column',

@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Favorite from '../screens/Favorite';
 import Home from '../screens/Home';
-import Profile from '../screens/Profile';
+import Profile from '../screens/BreakingNews';
 
 /* const screens = {
   Home: {
